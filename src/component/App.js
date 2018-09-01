@@ -7,11 +7,10 @@ class App extends Component {
   constructor(props){
     super(props)
     this.state={
-      post: [],
-      totalPost: null,
-      updatePost:[]
+      post: []
     }
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleDelete = this.handleDelete.bind(this)
     //this.isEmptyObj = this.isEmptyObj.bind(this)
   }
 
@@ -21,8 +20,7 @@ class App extends Component {
       .then(res =>{
         this.setState({
           ...this.state,
-          post: res,
-          updatePost: res
+          post: res
         })
       })
   }
@@ -60,18 +58,24 @@ class App extends Component {
         })
       })
     })
-    /*if(this.isEmptyObj(newPost)){
-     
-    }
-     console.log(this.state.totalPost)
-    */
   }
-
+  handleDelete = (deleteItem) =>{
+    API.deletePost(`/${deleteItem}`)
+    .then((res)=>{
+      API.fetchAllPost()
+      .then(res =>{
+        this.setState({
+          ...this.state,
+          post: res
+        })
+      })
+    })
+  }
   render(){
       return(
         <div className="App">
           <PostCreate handleSubmit={this.handleSubmit}/>
-          <PostList post = {this.state.post}/>
+          <PostList post = {this.state.post} handleDelete = {this.handleDelete} />
         </div>
       )
   }

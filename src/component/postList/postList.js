@@ -19,6 +19,7 @@ class PostList extends Component{
                     <li key={post._id}>
                     <h1>{post.name}</h1>
                     <p>{post.content}</p>
+                    <p onClick={ () => this.props.handleDelete(post._id)}>Delete</p>
                     </li>)
                 }
             </ul>

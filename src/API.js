@@ -20,5 +20,11 @@ module.exports = {
         .then(response =>{
             return [response.data.result]
         })
+    },
+    deletePost:(slug)=>{
+        return axios.delete(URL+slug)
+        .then(response =>{
+            console.log(response)
+        })
     }
 }
