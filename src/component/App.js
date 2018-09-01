@@ -8,7 +8,8 @@ class App extends Component {
     super(props)
     this.state={
       post: [],
-      totalPost: null
+      totalPost: null,
+      updatePost:[]
     }
     this.handleSubmit = this.handleSubmit.bind(this)
     //this.isEmptyObj = this.isEmptyObj.bind(this)
@@ -21,12 +22,15 @@ class App extends Component {
         this.setState({
           ...this.state,
           post: res,
-          totalPost: res.length
+          updatePost: res
         })
       })
   }
 
-  componentDidUpdate(prevProps,prevState){
+  /*componentDidUpdate(prevProps,prevState){
+    //console.log(prevState.totalPost)
+    //console.log(this.state.totalPost)
+    if(prevState.post != this.state.updatePost){
       API.fetchAllPost()
       .then(res =>{
         this.setState({
@@ -34,7 +38,8 @@ class App extends Component {
           post: res
         })
       })
-  }
+    }
+  }*/
   
   /*isEmptyObj(obj) {
     for (var key in obj) {
@@ -45,13 +50,16 @@ class App extends Component {
   }*/
 
   handleSubmit = (newPost) =>{
-    
     API.createPost(newPost)
-    this.setState({
-      ...this.state,
-      totalPost: this.state.totalPost+1
+    .then((res)=>{
+      API.fetchAllPost()
+      .then(res =>{
+        this.setState({
+          ...this.state,
+          post: res
+        })
+      })
     })
-
     /*if(this.isEmptyObj(newPost)){
      
     }

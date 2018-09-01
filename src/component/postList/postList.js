@@ -16,7 +16,7 @@ class PostList extends Component{
           return (
             <ul>
                 {   this.props.post.map( post =>
-                    <li key={post.name}>
+                    <li key={post._id}>
                     <h1>{post.name}</h1>
                     <p>{post.content}</p>
                     </li>)
