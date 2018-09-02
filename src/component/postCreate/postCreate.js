@@ -6,7 +6,8 @@ class PostCreate extends Component{
         this.state = {
             newPost: {
                 name: '',
-                content: ''
+                content: '',
+                like: 0
             }
         }
         this.handleChange = this.handleChange.bind(this)
@@ -29,7 +30,8 @@ class PostCreate extends Component{
             ...this.state,
             newPost: {
                 name: '',
-                content: ''
+                content: '',
+                like: 0
             }
         })
     }

@@ -11,7 +11,7 @@ module.exports = {
        return axios.get(URL)
       
         .then(response =>{
-            //console.log(response.data.result)
+            console.log(response.data.result)
             return response.data.result
         })
     },

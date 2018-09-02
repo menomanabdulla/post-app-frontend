@@ -98,7 +98,7 @@ class SinglePost extends Component{
                                             <p>{this.props.singlePost.content}</p>
                                         ) 
                                     }
-                                    <span onClick={ (event)=>this.nameEditHandelar(event) } 
+                                    <span onClick={(event)=>this.nameEditHandelar(event) } 
                                     data-name="isEditableContent"
                                     className="edit-icon">
                                         <i className="fas fa-pencil-alt"></i>
@@ -106,6 +106,10 @@ class SinglePost extends Component{
                                 </div>
                                 <button onClick={ () => this.props.handleDelete(this.props.singlePost._id)} className="btn btn-danger delete-btn">Delete</button>
                         </div>
+                    </div>
+                    <div className="post-reaction-block">
+                        <span></span>
+                        <span>{this.props.singlePost.like}</span>
                     </div>
                 </div>
           )
