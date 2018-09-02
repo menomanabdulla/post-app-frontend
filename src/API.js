@@ -21,6 +21,12 @@ module.exports = {
             return [response.data.result]
         })
     },
+    updatePost:(slug,updateContent)=>{
+        return axios.patch(URL+slug,updateContent)
+        .then(response =>{
+            console.log(response)
+        })
+    },
     deletePost:(slug)=>{
         return axios.delete(URL+slug)
         .then(response =>{

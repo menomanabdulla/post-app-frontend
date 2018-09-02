@@ -1,9 +1,68 @@
-import React, { Component } from 'react'
+import React from 'react'
+import SinglePost from './singlePost/singlePost'
+
+ const PostList = (props) =>{
+    
+    if(props.post.length === 0 ){
+        return(
+          <h3>Loading...</h3>
+        )
+    }else{
+        //console.log(props.post)
+        return(
+            <div className="single-post-block-area">
+
+                {
+                    props.post.map(post=>{
+                        //console.log(post);
+                       return <SinglePost key={post._id} 
+                            singlePost={post}
+                        handleDelete={props.handleDelete}
+                        handleUpdate={props.handleUpdate}
+                        />
+                    })
+                }
+            </div>
+        )
+    }
+   
+}
+
+export default PostList
 
 
-class PostList extends Component{
+/*class PostList extends Component{
     constructor(props){
         super(props)
+        this.state ={
+            isEditableContent: true,
+            content: null
+        }
+        this.inputChange = this.inputChange.bind(this)
+        this.keyPressHandler = this.keyPressHandler.bind(this)
+        this.blurHandler = this.blurHandler.bind(this)
+    }
+
+    inputChange(event){
+        this.setState({
+            ...this.state,
+            content: event.target.value
+        })
+    }
+
+    keyPressHandler(event){
+       if(event.key === 'Enter'){
+           this.setState({
+               ...this.state,
+               isEditableContent: false
+           })
+       }
+    }
+    blurHandler(event){
+        this.setState({
+            ...this.state,
+            isEditableContent: false
+        })
     }
 
     render() {
@@ -17,7 +76,20 @@ class PostList extends Component{
             <ul>
                 {   this.props.post.map( post =>
                     <li key={post._id}>
-                    <h1>{post.name}</h1>
+                    <h1>{
+                            ((this.state.isEditableContent)? 
+                                (<input 
+                                className="form-controll"
+                                onChange = {(event) => this.inputChange(event)}
+                                onKeyPress = {(event) => this.keyPressHandler(event)}
+                                onBlur = {(event)=> this.blurHandler(event)}
+                                type="text" value={
+                                    this.state.title
+                                } />) :
+
+                                post.name
+                            ) 
+                        }</h1>
                     <p>{post.content}</p>
                     <p onClick={ () => this.props.handleDelete(post._id)}>Delete</p>
                     </li>)
@@ -28,26 +100,4 @@ class PostList extends Component{
     }
 }
 
-export default  PostList
-
-/* 
-
-            {((this.props.post.length === 0) ? 
-                    (
-                            this.props.post.map( post =>
-                            <li key={post.name}>
-                                <h1>{post.name}</h1>
-                                <p>{post.content}</p>
-                            </li>)
-                       
-                    )
-                    :
-                    (
-                        <li key={this.props.post.name}>
-                            <h1>{this.props.post.name}</h1>
-                            <p>{this.props.post.content}</p>
-                        </li>
-                    )
-                )}
-
-*/
+export default  PostList*/

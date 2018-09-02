@@ -11,6 +11,7 @@ class App extends Component {
     }
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleDelete = this.handleDelete.bind(this)
+    this.handleUpdate = this.handleUpdate.bind(this)
     //this.isEmptyObj = this.isEmptyObj.bind(this)
   }
 
@@ -71,11 +72,27 @@ class App extends Component {
       })
     })
   }
+
+  handleUpdate= (updateItem,updateContent) =>{
+    API.updatePost(`/${updateItem}`,updateContent)
+    .then((res)=>{
+      API.fetchAllPost()
+      .then(res =>{
+        this.setState({
+          ...this.state,
+          post: res
+        })
+      })
+    })
+  }
+
   render(){
       return(
         <div className="App">
           <PostCreate handleSubmit={this.handleSubmit}/>
-          <PostList post = {this.state.post} handleDelete = {this.handleDelete} />
+          <PostList post = {this.state.post}
+          handleDelete = {this.handleDelete}
+          handleUpdate = {this.handleUpdate} />
         </div>
       )
   }
