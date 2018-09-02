@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.css';
 import PostList from './postList/postList'
 import PostCreate from './postCreate/postCreate'
 const API = require('../API')
@@ -88,7 +89,7 @@ class App extends Component {
 
   render(){
       return(
-        <div className="App">
+        <div className="App container">
           <PostCreate handleSubmit={this.handleSubmit}/>
           <PostList post = {this.state.post}
           handleDelete = {this.handleDelete}

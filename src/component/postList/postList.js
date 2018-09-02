@@ -10,8 +10,8 @@ import SinglePost from './singlePost/singlePost'
     }else{
         //console.log(props.post)
         return(
-            <div className="single-post-block-area">
-
+            <div className="single-post-block-area row">
+                <div className="col-md-8 offset-md-2">
                 {
                     props.post.map(post=>{
                         //console.log(post);
@@ -22,6 +22,7 @@ import SinglePost from './singlePost/singlePost'
                         />
                     })
                 }
+                </div>
             </div>
         )
     }

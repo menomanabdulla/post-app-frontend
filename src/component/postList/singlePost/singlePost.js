@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import './singlePost.css';
 class SinglePost extends Component{
     constructor(props){
         super(props)
@@ -50,55 +50,63 @@ class SinglePost extends Component{
     render() {
           return (
                 <div className="single-post-block">
-                    <div className="title-block">
-                        {
-                            ((this.state.isEditableName)? 
-                                (<input 
-                                className="form-controll"
-                                name="name"
-                                onChange={this.handleChange}
-                                onKeyPress = {(event) => this.keyPressHandler(event)}
-                                onBlur = {(event)=> this.blurHandler(event)}
-                                type="text" value={
-                                    this.state.updatePost.name
-                                } 
-                                data-name="isEditableName"
-                                />) :
-
-                                <h1>{this.props.singlePost.name}</h1>
-                                
-                            ) 
-                        }
-                        <span onClick={ (event)=>this.nameEditHandelar(event) } 
-                        data-name="isEditableName"
-                        className="ml-auto edit-icon">
-                            <i className="fas fa-pencil-alt"></i>
-                        </span>
-                    </div>
-                    <div className="content-block">
-                        {
-                            ((this.state.isEditableContent)? 
-                                (<textarea rows="4" cols="50" 
+                    <div className="single-post-block-inner">
+                        <div className="inner-left-block">
+                            <span className="avater-block">
+                                {this.props.singlePost.name.charAt(0)}
+                            </span>
+                        </div>
+                        <div className="inner-right-block">
+                            <div className="title-block">
+                            {
+                                ((this.state.isEditableName)? 
+                                    (<input 
                                     className="form-controll"
-                                    name="content" 
+                                    name="name"
                                     onChange={this.handleChange}
                                     onKeyPress = {(event) => this.keyPressHandler(event)}
                                     onBlur = {(event)=> this.blurHandler(event)}
-                                    value={this.state.updatePost.content} 
+                                    type="text" value={
+                                        this.state.updatePost.name
+                                    } 
+                                    data-name="isEditableName"
+                                    />) :
+                                    <div className="name-avatar-block">
+                                        <h1>{this.props.singlePost.name}</h1>
+                                    </div>
+                                ) 
+                                }
+                                <span onClick={ (event)=>this.nameEditHandelar(event) } 
+                                data-name="isEditableName"
+                                className="edit-icon">
+                                    <i className="fas fa-pencil-alt"></i>
+                                </span>
+                            </div>
+                                <div className="content-block">
+                                    {
+                                        ((this.state.isEditableContent)? 
+                                            (<textarea rows="4" cols="50" 
+                                                className="form-controll"
+                                                name="content" 
+                                                onChange={this.handleChange}
+                                                onKeyPress = {(event) => this.keyPressHandler(event)}
+                                                onBlur = {(event)=> this.blurHandler(event)}
+                                                value={this.state.updatePost.content} 
+                                                data-name="isEditableContent"
+                                                >
+                                            </textarea>):
+                                            <p>{this.props.singlePost.content}</p>
+                                        ) 
+                                    }
+                                    <span onClick={ (event)=>this.nameEditHandelar(event) } 
                                     data-name="isEditableContent"
-                                    >
-                                </textarea>):
-                                <p>{this.props.singlePost.content}</p>
-                            ) 
-                        }
-                        <span onClick={ (event)=>this.nameEditHandelar(event) } 
-                        data-name="isEditableContent"
-                        className="ml-auto edit-icon">
-                            <i className="fas fa-pencil-alt"></i>
-                        </span>
+                                    className="edit-icon">
+                                        <i className="fas fa-pencil-alt"></i>
+                                    </span>
+                                </div>
+                                <button onClick={ () => this.props.handleDelete(this.props.singlePost._id)} className="btn btn-danger delete-btn">Delete</button>
+                        </div>
                     </div>
-                    
-                    <button onClick={ () => this.props.handleDelete(this.props.singlePost._id)}>Delete</button>
                 </div>
           )
     }

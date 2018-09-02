@@ -1,0 +1,75 @@
+.single-post-block{
+    margin-bottom: 30px;
+    padding: 30px 30px 30px 115px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+.single-post-block-inner{
+    display: flex;
+    align-items: center;
+}
+.title-block{
+    display: flex;
+    align-items: center;
+    min-width: 350px;
+    min-height: 85px;
+}
+.content-block textarea:hover,
+.title-block input:hover,
+.content-block textarea,
+.title-block input{
+    width: 100%;
+    padding: 8px 15px;
+    border-radius: 5px;
+    box-shadow: none;
+    outline: 0;
+    border: 1px solid #ddd;
+}
+.content-block textarea{
+    margin-bottom: 30px;
+}
+.title-block h1{
+    margin: 0;
+    min-width: 350px;
+}
+.avater-block{
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+    background: #ddd;
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 75px;
+    margin-right: 40px;
+    text-align: center;
+    display: block;
+}
+.inner-left-block,
+.content-block{
+    display: flex;
+    align-items: center;
+}
+.content-block p{
+    min-width: 350px;
+}
+
+.single-post-block-area{
+    text-align: left;
+}
+.delete-btn,
+.edit-icon{
+    padding: 15px 30px;
+    cursor: pointer;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.3s ease-in;
+}
+.delete-btn{
+    padding: 8px 30px;
+}
+.single-post-block:hover .delete-btn,
+.content-block:hover .edit-icon,
+.title-block:hover .edit-icon{
+    visibility: visible;
+    opacity: 1;
+}
