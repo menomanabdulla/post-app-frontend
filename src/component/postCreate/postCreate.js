@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import './postCreate.css'
 class PostCreate extends Component{
     constructor(props){
         super(props)
@@ -35,13 +35,23 @@ class PostCreate extends Component{
     }
     render() {
         return(
-            <div className="post-create-block">
-                <form onSubmit={this.createPost}>
-                    <input type="text" name="name" placeholder="Enter name" value={this.state.newPost.name} onChange={this.handleChange}/>
-                    <textarea rows="4" cols="50" name="content" placeholder="What's on your mind?" value={this.state.newPost.content} onChange={this.handleChange}>
-                    </textarea>
-                    <button type="submit">Post</button>
-                </form>
+            <div className="row">
+                <div className="col-md-8 offset-md-2">
+                    <div className="post-create-block">
+                        <form className="form" onSubmit={this.createPost}>
+                            <div className="form-group">
+                                <input className="form-control" type="text" name="name" placeholder="Enter name" value={this.state.newPost.name} onChange={this.handleChange}/>
+                            </div>
+                            <div className="form-group">
+                                <textarea className="form-control" rows="4" cols="50" name="content" placeholder="What's on your mind?" value={this.state.newPost.content} onChange={this.handleChange}>
+                                </textarea>
+                            </div>
+                            <div className="btn-group">
+                                <button type="submit" className="btn btn-primary post-btn">Post</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
         )
     }

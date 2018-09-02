@@ -53,7 +53,7 @@ class SinglePost extends Component{
                     <div className="single-post-block-inner">
                         <div className="inner-left-block">
                             <span className="avater-block">
-                                {this.props.singlePost.name.charAt(0)}
+                                {this.props.singlePost.name.charAt(0).toUpperCase()}
                             </span>
                         </div>
                         <div className="inner-right-block">

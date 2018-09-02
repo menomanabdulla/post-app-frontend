@@ -1,0 +1,16 @@
+.post-create-block{
+    margin-bottom: 50px;
+}
+
+.post-create-block .btn-group{
+    display: block;
+    text-align: right;
+}
+
+.post-create-block .btn-group .post-btn,
+.post-create-block .btn-group .post-btn:focus,
+.post-create-block .btn-group .post-btn:active:focus{
+    padding: 8px 30px;
+    outline: 0;
+    box-shadow: none;
+}
